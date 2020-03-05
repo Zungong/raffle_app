@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
+# rubocop:disable RSpec/InstanceVariable, RSpec/NestedGroups, RSpec/NamedSubject
 RSpec.describe HomeController, type: :controller do
   describe 'GET #index' do
     context 'when not signed in' do
@@ -11,7 +14,7 @@ RSpec.describe HomeController, type: :controller do
 
     context 'when signed in' do
       before do
-        @request.env["devise.mapping"] = Devise.mappings[:user]
+        @request.env['devise.mapping'] = Devise.mappings[:user]
         user = FactoryBot.create(:user)
         sign_in user
       end
@@ -39,3 +42,4 @@ RSpec.describe HomeController, type: :controller do
     end
   end
 end
+# rubocop:enable RSpec/InstanceVariable, RSpec/NestedGroups, RSpec/NamedSubject
